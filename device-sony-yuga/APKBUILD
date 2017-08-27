@@ -1,0 +1,33 @@
+pkgname=device-sony-yuga
+pkgver=1
+pkgrel=1
+pkgdesc="Sony Xperia Z"
+url="https://github.com/postmarketOS"
+arch="noarch"
+license="MIT"
+depends="linux-sony-yuga mkbootimg"
+makedepends=""
+install=""
+subpackages=""
+source="deviceinfo initfs-hook.sh 90-android.rules fb-workaround.sh "
+options="!check"
+
+build() {
+	return 0
+}
+
+package() {
+	install -D -m644 "$srcdir/deviceinfo" \
+		"$pkgdir/etc/deviceinfo"
+        install -D -m644 "$srcdir"/initfs-hook.sh \
+		"$pkgdir"/etc/postmarketos-mkinitfs/hooks/00-${pkgname}.sh
+	install -D -m644 "$srcdir"/90-android.rules \
+		"$pkgdir"/etc/udev/rules.d/90-android.rules
+	install -D -m644 "$srcdir"/fb-workaround.sh \
+		"$pkgdir"/etc/profile.d/fb-workaround.sh
+}
+
+sha512sums="3738e94cfd0c7fd1238733e4d5eef90c50b2283cf6126b2493e0e50ecba0708cf521f9f5c37ed44cdc18c9b38ef3c5f511a6f251684af7958e4787b3ba3c2094  deviceinfo
+d0523efb3839c93c06ca2c6bb45195314d5449176a3792a54e84670c8f1cffe85303b753b6b2ae49a9936ffc9f06141bc6f39f1b0a4179e702e59a4e13bfbe1a  initfs-hook.sh
+1dd1196aa9abe0308a0841147e7e5c6eb50da742cfc3194b90ef22a62d034b43ddade70384b78ab38fa0177da5a822f2a40f1386f4ecd591e2ecc80cb679133a  90-android.rules
+13f36f33cfae5e759b3889bc4e308324fd9bcf1cc7b097bbbe3646f1243b3bc06e1b1594cc8578c52c304a2b5006babd978c5b3f258769892e80552457889f99  fb-workaround.sh"

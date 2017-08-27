@@ -1,0 +1,5 @@
+device-*
+linux-*
+firmware-*
+!device-sony-yuga/
+!linux-sony-yuga/
