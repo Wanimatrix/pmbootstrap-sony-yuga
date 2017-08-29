@@ -7,8 +7,6 @@
 #
 # Kernel config changes, based on: arch/arm/configs/fusion3_yuga_defconfig
 # - enable devtmpfs (needed for udev -> touch support in weston)
-# - change compression from CONFIG_KERNEL_LZO=y to
-#	CONFIG_KERNEL_GZIP=y (so it works with busybox)
 
 _vendor=sony
 _flavor=sony-yuga
@@ -26,7 +24,7 @@ arch="armhf"
 pkgdesc="Sony Xperia Z kernel"
 url="https://github.com/LineageOS/android_kernel_sony_apq8064"
 depends="postmarketos-mkinitfs"
-makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev xz-utils"
+makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev"
 options="!strip !check !tracedeps"
 install=
 source="
@@ -106,7 +104,7 @@ package() {
 }
 
 sha512sums="101dcd8a78ea5dbac8ed8b12528e867cd2b6e0e1294d4c5d58337f735786ffc735e085b2a9f6e4cb56ff3758aca62c44a8cff6fd17a335e6581a91d979b12f22  linux-sony-yuga-8c6f648c62a50c8577df851e51eefb38ebeb82b8.tar.gz
-bd8f84e5487cf468b022456081b7cbbe826744c2a6d908e569d7769fda89fb1f518cf03ac311f776938d6ea7ad7fd42f97b65edde74f270889d16541fa63bfd8  config-sony-yuga.armhf
+1bdc32ea359540626445e2f49e63120b81c3d5d43d02480ea59a28b970fccbfb25f75f0c213c4ed2e5cf273a11f887478a01ecfc06e1eb820dc441adc0fdac1e  config-sony-yuga.armhf
 d80980e9474c82ba0ef1a6903b434d8bd1b092c40367ba543e72d2c119301c8b2d05265740e4104ca1ac5d15f6c4aa49e8776cb44264a9a28dc551e0d1850dcc  compiler-gcc6.h
 ea1d3b5a234fa565e3c1a792de48f4fc4e6023d281d303c8e319c7ef28edc5739ab0e4dea0139a41f0a5c7d03e27921ccaa214fd0ac5c72245a094ce60128864  aeea3592a13bf12861943e44fc48f1f270941f8d.patch
 f7e31cfe422696922aec52002e56c58103183966edee3bb8e1995d33f8d37b07c32280a8ecc213874e358a6ff367418556a4542fba7e3c17e4b8e82e05c3a543  psmouse_base.patch
